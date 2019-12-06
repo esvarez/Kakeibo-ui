@@ -1,0 +1,16 @@
+<mat-card>
+   
+   <div>
+      <div class="chart-container">
+         <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [plugins]="pieChartPlugins"
+            [colors]="pieChartColors"
+            [legend]="pieChartLegend">
+         </canvas>
+      </div> 
+   </div>
+</mat-card>

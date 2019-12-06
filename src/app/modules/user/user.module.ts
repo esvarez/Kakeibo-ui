@@ -5,17 +5,20 @@ import { IndexUserComponent } from './pages/index-user/index-user.component';
 import { MaterialModule } from '../material/material.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router'
+import { ChartsModule } from 'ng2-charts';
+import { ExpenseChartComponent } from './components/expense-chart/expense-chart.component'
 
 @NgModule({
   declarations: [
     DashboardComponent,
     IndexUserComponent, 
-    SelectAccountComponent, 
+    SelectAccountComponent, ExpenseChartComponent, 
   ],
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    ChartsModule
   ]
 })
 export class UserModule { }
