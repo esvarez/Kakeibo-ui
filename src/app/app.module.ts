@@ -15,14 +15,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './modules/home/login/login.component';
+import { RegisterComponent } from './modules/home/register/register.component';
+import { DashboardComponent } from './modules/home/dashboard/dashboard.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { IndexComponent } from './index/index.component';
-import { LedgerComponent } from './ledger/ledger.component';
+import { IndexComponent } from './modules/home/index/index.component';
+import { LedgerComponent } from './modules/home/ledger/ledger.component';
 
 
 @NgModule({
