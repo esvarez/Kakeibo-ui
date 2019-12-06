@@ -8,21 +8,18 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './modules/home/login/login.component';
 import { RegisterComponent } from './modules/home/register/register.component';
-import { DashboardComponent } from './modules/home/dashboard/dashboard.component';
+import { DashboardComponent } from './modules/user/components/dashboard/dashboard.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { IndexComponent } from './modules/home/index/index.component';
 import { LedgerComponent } from './modules/home/ledger/ledger.component';
+import { UserModule } from './modules/user/user.module';
+import { IndexUserComponent } from './modules/user/pages/index-user/index-user.component';
+import { SelectAccountComponent } from './modules/user/components/select-account/select-account.component';
 
 
 @NgModule({
@@ -30,25 +27,19 @@ import { LedgerComponent } from './modules/home/ledger/ledger.component';
     AppComponent,    
     LoginComponent,
     RegisterComponent,
-    DashboardComponent,
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
     IndexComponent,
-    LedgerComponent,
+    LedgerComponent
   ],
-  imports: [
-    MatSliderModule,
+  imports: [    
     BrowserModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    AppRountingModule
+    AppRountingModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
