@@ -6,13 +6,14 @@ import { MaterialModule } from '../material/material.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router'
 import { ChartsModule } from 'ng2-charts';
-import { ExpenseChartComponent } from './components/expense-chart/expense-chart.component'
+import { ExpenseChartComponent } from './components/expense-chart/expense-chart.component';
+import { MovementsComponent } from './components/movements/movements.component'
 
 @NgModule({
   declarations: [
     DashboardComponent,
     IndexUserComponent, 
-    SelectAccountComponent, ExpenseChartComponent, 
+    SelectAccountComponent, ExpenseChartComponent, MovementsComponent, 
   ],
   imports: [
     CommonModule,
