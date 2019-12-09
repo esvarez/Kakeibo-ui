@@ -20,6 +20,7 @@ import { LedgerComponent } from './modules/home/ledger/ledger.component';
 import { UserModule } from './modules/user/user.module';
 import { IndexUserComponent } from './modules/user/pages/index-user/index-user.component';
 import { SelectAccountComponent } from './modules/user/components/select-account/select-account.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { SelectAccountComponent } from './modules/user/components/select-account
     BrowserAnimationsModule,
     LayoutModule,
     AppRountingModule,
-    UserModule
+    UserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
