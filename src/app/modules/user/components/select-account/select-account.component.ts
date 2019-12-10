@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/shared/models/Account'
 import { AccountService } from 'src/app/core/services/account.service';
+import { State } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'kui-select-account',
@@ -12,9 +14,14 @@ export class SelectAccountComponent implements OnInit {
   private userId: Number = 1;
   accounts: Account[]
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService,
+              private store: Store<State>) { }
 
   ngOnInit() {    
+    this.store.select('user')
+      .subscribe(user => {
+        console.log(user)
+      })
     this.accountService.getAccountsFromUserId(this.userId)
       .subscribe(res => this.accounts = res)
   }
