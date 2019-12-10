@@ -12,12 +12,9 @@ export class AuthService {
 
   private isUserAuth: boolean
   constructor(private router: Router,
-              private store: Store<UserState>) { 
-                console.log('Constructor ' + this.isUserAuth)
-              }
+              private store: Store<UserState>) { }
 
   login() {
-    console.log('login')
     const newUser = new User({id:1, user: 'UserTest'})
     this.store.dispatch(new SetUserAction(newUser))
     this.isUserAuth = true
@@ -25,15 +22,13 @@ export class AuthService {
   }
 
   logout() {
-    console.log('loguut')
     this.isUserAuth = false    
   }
 
   isAuth(): boolean {   
     if (this.isUserAuth == null) {
       this.router.navigate(['/login'])
-    }
-    console.log(this.isUserAuth) 
+    }    
     return this.isUserAuth
   }
 }
