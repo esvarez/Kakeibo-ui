@@ -4,6 +4,7 @@ import { AccountService } from 'src/app/core/services/account.service';
 import { State } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { MovementService } from 'src/app/core/services/movement.service';
 
 @Component({
   selector: 'kui-select-account',
@@ -13,11 +14,13 @@ import { Subscription } from 'rxjs';
 export class SelectAccountComponent implements OnInit, OnDestroy {
   
   private userId: Number
+  private selected: Number
   private accounts: Account[]
   private userSubscription: Subscription
   private accuntSubscription: Subscription
 
   constructor(private accountService: AccountService,
+              private movementService: MovementService,
               private store: Store<State>) { }
 
   ngOnInit() {    
@@ -31,11 +34,11 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
     this.userSubscription.unsubscribe()
     this.accuntSubscription.unsubscribe()
   }
-/*
-  accounts: Account[] = [
-    { id: 1, name: "Cuenta de debito", amount: 2500, description: "Descripcion" },    
-    { id: 2, name: 'Cuenta credito', amount: 3000 },
-    { id: 3, name: 'Efectivo', amount: 2000 },
-  ]
-*/
+
+  onChange() {
+    this.movementService.getMovementsFromAccountId(this.selected)
+      .subscribe(res => console.log(res))
+    console.log(this.selected)
+  }
+
 }
