@@ -5,6 +5,7 @@ import { State } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { MovementService } from 'src/app/core/services/movement.service';
+import { SetAccountAction } from '../../user.actions';
 
 @Component({
   selector: 'kui-select-account',
@@ -14,7 +15,7 @@ import { MovementService } from 'src/app/core/services/movement.service';
 export class SelectAccountComponent implements OnInit, OnDestroy {
   
   private userId: Number
-  private selected: Number
+  private accountSelected: Account
   private accounts: Account[]
   private userSubscription: Subscription
   private accuntSubscription: Subscription
@@ -36,9 +37,8 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
   }
 
   onChange() {
-    this.movementService.getMovementsFromAccountId(this.selected)
-      .subscribe(res => console.log(res))
-    console.log(this.selected)
+    const account = new Account(this.accountSelected)    
+    this.store.dispatch(new SetAccountAction(account))
   }
 
 }

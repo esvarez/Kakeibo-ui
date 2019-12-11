@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Movement } from 'src/app/shared/models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,9 @@ export class MovementService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getMovementsFromAccountId(accountId: Number) {
-    return this.httpClient.get(`${this.apiURL}/accounts/${accountId}/movements`)
+  public getMovementsFromAccountId(accountId: Number): Observable<Movement[]> {
+    return this.httpClient.get<Movement[]>(`${this.apiURL}/accounts/${accountId}/movements`)    
   }
+
+
 }
