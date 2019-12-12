@@ -7,19 +7,27 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router'
 import { ChartsModule } from 'ng2-charts';
 import { ExpenseChartComponent } from './components/expense-chart/expense-chart.component';
-import { MovementsComponent } from './components/movements/movements.component'
+import { MovementsComponent } from './components/movements/movements.component';
+import { MovementButtonsComponent, DialogRegisterMovementsTabs } from './components/movement-buttons/movement-buttons.component'
 
 @NgModule({
   declarations: [
     DashboardComponent,
     IndexUserComponent, 
-    SelectAccountComponent, ExpenseChartComponent, MovementsComponent, 
+    SelectAccountComponent, 
+    ExpenseChartComponent, 
+    MovementsComponent, 
+    MovementButtonsComponent,
+    DialogRegisterMovementsTabs
   ],
   imports: [
     CommonModule,
     RouterModule,
     MaterialModule,
     ChartsModule
+  ],
+  entryComponents: [
+    DialogRegisterMovementsTabs
   ]
 })
 export class UserModule { }

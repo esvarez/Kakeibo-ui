@@ -5,9 +5,9 @@
     [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/crisis-center">Link 1</a>
-      <a mat-list-item routerLink="/crisis-center">Link 2</a>
-      <a mat-list-item routerLink="/crisis-center">Link 3</a>
+      <a mat-list-item routerLink="/">Link 1</a>
+      <a mat-list-item routerLink="/register">Link 2</a>
+      <a mat-list-item (click)="onCloseSesion()">Cerrar Sesion</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

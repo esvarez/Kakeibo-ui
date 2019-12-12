@@ -19,6 +19,11 @@ export function userReducer(state = initState, action: fromUser.actions): UserSt
             user: { ... action.user },
             account: state.account
          }
+      case fromUser.CLOSE_SESION:
+         return {
+            user: null,
+            account: null
+         }
       case fromUser.SET_ACCOUNT:
          return {
             user: state.user,
