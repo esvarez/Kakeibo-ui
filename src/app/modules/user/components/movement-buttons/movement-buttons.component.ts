@@ -13,23 +13,4 @@ export class MovementButtonsComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(type): void {
-    const dialogRef = this.dialog.open(DialogRegisterMovementsTabs, {
-
-    })
-  }
-
-}
-
-@Component({
-  selector: 'dialog-register-movements-tabs',
-  templateUrl: 'dialog-register-movements-tabs.html'
-})
-export class DialogRegisterMovementsTabs {
-  constructor(public dialogRef: MatDialogRef<DialogRegisterMovementsTabs>) {}
-
-  onCloseClick(): void {
-    this.dialogRef.close()
-  }
-
 }
