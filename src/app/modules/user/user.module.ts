@@ -14,6 +14,7 @@ import { RegisterMovementFormsComponent } from './components/register-movement-f
 import { IncomeFormComponent } from './components/income-form/income-form.component';
 import { ExpenseFormComponent } from './components/expense-form/expense-form.component';
 import { TransferFormComponent } from './components/transfer-form/transfer-form.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { TransferFormComponent } from './components/transfer-form/transfer-form.
     CommonModule,
     RouterModule,
     MaterialModule,
-    ChartsModule
+    ChartsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

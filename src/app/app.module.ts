@@ -23,7 +23,7 @@ import { IndexComponent } from './modules/home/index/index.component';
 import { LedgerComponent } from './modules/home/ledger/ledger.component';
 import { UserModule } from './modules/user/user.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [    
     UserModule,
+    FormsModule,
     LayoutModule,
     BrowserModule,
     HttpClientModule,
