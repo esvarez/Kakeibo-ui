@@ -1,8 +1,8 @@
 <mat-card>
    <mat-form-field class="full-width">
       <mat-label>Cuentas</mat-label>
-      <mat-select>
-         <mat-option *ngFor="let account of accounts" [value]="account.id">
+      <mat-select [(value)]="accountSelected" (selectionChange)="onChange()">
+         <mat-option *ngFor="let account of accounts" [value]="account">
             {{account.name}}
          </mat-option>
       </mat-select>

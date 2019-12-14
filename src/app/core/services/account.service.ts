@@ -4,6 +4,7 @@ import { Account } from 'src/app/shared/models';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/reducers/index'
 import { ActivarLoadingAction } from 'src/app/shared/ui.acctions';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AccountService {
 
   constructor(private httpClient: HttpClient,
     private store: Store<State>) { }    
-  public getAccountsFromUserId(userId: Number){  
+  public getAccountsFromUserId(userId: Number): Observable<Account[]> {  
     this.store.dispatch(new ActivarLoadingAction())  
     return this.httpClient.get<Account[]>(`${this.apiURL}/users/${userId}/accounts`);
   }

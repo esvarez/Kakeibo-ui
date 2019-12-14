@@ -1,9 +1,10 @@
+import { Category } from './Category';
+
 export interface Movement {
    id?: Number;
    amount: Number;
-   categoryName: String;
-   categoryType: String;
-   category: String;
+   accountName?: null;   
+   category: Category;
    description?: String;
    date: String;
 }

@@ -1,8 +1,8 @@
-<mat-card>
+<mat-card>      
    <mat-nav-list>
       <mat-list-item *ngFor='let movement of movements' class="item">
-         <mat-icon mat-list-icon>{{ movement.category }}</mat-icon>      
-            <h4 mat-line>{{ movement.categoryName }}</h4>
+         <mat-icon mat-list-icon>{{ movement.category.imageURL }}</mat-icon>      
+            <h4 mat-line>{{ movement.category.name }}</h4>
             <p mat-line>{{ movement.description }}</p>             
             <a mat-button >{{ movement.amount }}</a>
       </mat-list-item>

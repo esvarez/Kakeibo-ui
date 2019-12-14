@@ -1,7 +1,9 @@
 import { Action } from '@ngrx/store'
-import { User } from 'src/app/shared/models'
+import { User, Account } from 'src/app/shared/models'
 
-export const SET_USER = '[User] set User'
+export const SET_USER = '[User] Set User'
+export const SET_ACCOUNT = '[USER] Set Account'
+export const CLOSE_SESION = '[User] Closer Sesion'
 
 export class SetUserAction implements Action {
    readonly type = SET_USER
@@ -9,4 +11,16 @@ export class SetUserAction implements Action {
    constructor(public user: User) {}
 }
 
-export type actions = SetUserAction
+export class SetAccountAction implements Action {
+   readonly type = SET_ACCOUNT
+   
+   constructor(public account: Account){}
+}
+
+export class CloseSesionAction implements Action {
+   readonly type = CLOSE_SESION
+}
+
+export type actions = SetUserAction                    
+                    | SetAccountAction
+                    | CloseSesionAction
