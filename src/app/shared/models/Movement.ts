@@ -8,3 +8,12 @@ export interface Movement {
    description?: String;
    date: String;
 }
+
+export interface IMovementSaveRequest {
+   amount: Number
+   category: {
+      id: Number
+   }
+   description?: String
+   date: Date
+}
