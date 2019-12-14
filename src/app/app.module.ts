@@ -23,6 +23,7 @@ import { IndexComponent } from './modules/home/index/index.component';
 import { LedgerComponent } from './modules/home/ledger/ledger.component';
 import { UserModule } from './modules/user/user.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,13 +37,15 @@ import { HttpClientModule } from '@angular/common/http';
     LedgerComponent
   ],
   imports: [    
-    BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    BrowserAnimationsModule,
-    LayoutModule,
-    AppRountingModule,
     UserModule,
+    FormsModule,
+    LayoutModule,
+    BrowserModule,
     HttpClientModule,
+    AppRountingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
