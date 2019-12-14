@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Account, Category } from 'src/app/shared/models';
+import { Account, Category, IMovementSaveRequest } from 'src/app/shared/models';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MovementService } from 'src/app/core/services/movement.service';
 
 @Component({
   selector: 'kui-income-form',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class IncomeFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private movementService: MovementService) { }
 
   ngOnInit() {
   }
@@ -45,9 +46,15 @@ export class IncomeFormComponent implements OnInit {
 
   sendForm() {
     if (this.movementForm.valid){
-      console.log('Send')
+      const accountId = this.account.value;
+      const movementSaveRequest: IMovementSaveRequest = {
+        ... this.movementForm.value
+      }
+      console.log('account id', accountId)
+      console.log('movement', movementSaveRequest)
+    } else {
+      console.log(this.movementForm.value)
     }
-    console.log(this.movementForm.value)
   }
 
 }
