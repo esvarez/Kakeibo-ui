@@ -4,6 +4,11 @@ import { NgModule } from '@angular/core';
 //Modulos
 import { AppRountingModule } from './app-routing.module';
 
+// NGRX
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -11,17 +16,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LoginComponent } from './modules/home/login/login.component';
 import { RegisterComponent } from './modules/home/register/register.component';
-import { DashboardComponent } from './modules/user/components/dashboard/dashboard.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { IndexComponent } from './modules/home/index/index.component';
 import { LedgerComponent } from './modules/home/ledger/ledger.component';
 import { UserModule } from './modules/user/user.module';
-import { IndexUserComponent } from './modules/user/pages/index-user/index-user.component';
-import { SelectAccountComponent } from './modules/user/components/select-account/select-account.component';
 import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -41,7 +42,18 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutModule,
     AppRountingModule,
     UserModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
