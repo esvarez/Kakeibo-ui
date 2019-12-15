@@ -1,6 +1,6 @@
 <mat-form-field class="full-width">
    <mat-label>Cuentas</mat-label>
-   <mat-select [(value)]="accountSelected" (selectionChange)="onChange()">
+   <mat-select (selectionChange)="onChange()" [(value)]="accountSelected">
       <mat-option *ngFor="let account of accounts" [value]="account">
          {{account.name}}
       </mat-option>

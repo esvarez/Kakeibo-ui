@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Movement } from 'src/app/shared/models';
 import { Observable } from 'rxjs';
 import { UrlConfig } from 'src/app/configs/UrlConfing';
@@ -9,9 +9,14 @@ import { UrlConfig } from 'src/app/configs/UrlConfing';
 })
 export class MovementService {
 
+  private headers: HttpHeaders
+
   constructor(private httpClient: HttpClient,
               private url: UrlConfig) {
     url = new UrlConfig()
+    this.headers = new HttpHeaders({
+      'Content-Type':  'application/json'
+    })    
   }
 
   public getMovementsFromAccountId(accountId: Number): Observable<Movement[]> {
@@ -20,7 +25,8 @@ export class MovementService {
 
   public postMovement(accountId: Number, movement: any) {
     const body = JSON.stringify(movement)
-    return this.httpClient.post(`${this.url.host}${this.url.accounts}/${accountId}${this.url.movements}`, body)
+    
+    return this.httpClient.post(`${this.url.host}${this.url.accounts}/${accountId}${this.url.movements}`, body, { headers: this.headers})
   }
 
 }

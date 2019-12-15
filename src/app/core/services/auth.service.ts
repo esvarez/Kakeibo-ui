@@ -26,6 +26,11 @@ export class AuthService {
   }
 
   isAuth(): boolean {   
+    let userAuth
+    this.store.select('user').subscribe(user => userAuth = user)
+    if (userAuth != null) {
+      this.isUserAuth = true
+    }    
     if (this.isUserAuth == null) {
       this.router.navigate(['/login'])
     }    

@@ -29,9 +29,9 @@ export class MovementsComponent implements OnInit {
               private movementService: MovementService) { }
 
   ngOnInit() {
-    this.accountSubscriber = this.store.select('user')    
-      .subscribe(user => { 
-        this.accountId = user.account && user.account.id || 0 
+    this.accountSubscriber = this.store.select('userState')    
+      .subscribe(state => { 
+        this.accountId = state.accountSelected && state.accountSelected.id || 0 
         this.movementsSubsciber = this.movementService
           .getMovementsFromAccountId(this.accountId)
           .subscribe(res => this.movements = res)

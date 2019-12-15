@@ -1,4 +1,19 @@
 <form class="form-container" [formGroup]="movementForm" >
+   
+   <mat-radio-group aria-labelledby="example-radio-group-label"
+      class="radio-group"
+      formControlName="movementType">
+      <mat-radio-button value="Income" class="radio-button">Ingreso</mat-radio-button>
+      <mat-radio-button value="Expense" class="radio-button">Gasto</mat-radio-button>
+      <mat-radio-button value="Transfer" class="radio-button" disabled>Transferencia</mat-radio-button>
+   </mat-radio-group>
+
+   <mat-form-field class="full-width">
+      <input matInput placeholder="Amount" type="number" class="right-align" formControlName="amount">
+      <span matPrefix>$&nbsp;</span>   
+      <mat-error *ngIf="amount.invalid">Cantidad es requerida</mat-error>           
+   </mat-form-field>
+   
    <mat-form-field class="full-width">
       <mat-label>Cuentas</mat-label>
       <mat-select formControlName="account">
@@ -8,37 +23,31 @@
       </mat-select>
       <mat-error *ngIf="account.invalid">Cuenta es requerida</mat-error>
    </mat-form-field>
-   
+      
    <mat-form-field class="full-width">
       <mat-label>Categoria</mat-label>
       <mat-select  formControlName="category">
-         <mat-option *ngFor="let category of categories" [value]="category.id">
+         <mat-option *ngFor="let category of allCategories" [value]="category.id">
             {{category.name}}
          </mat-option>
       </mat-select>
       <mat-error *ngIf="category.invalid">Categoria es requerida</mat-error>
    </mat-form-field>
-
-   <mat-form-field class="full-width">
-      <input matInput placeholder="Amount" type="number" class="right-align" formControlName="amount">
-      <span matPrefix>$&nbsp;</span>   
-      <mat-error *ngIf="amount.invalid">Cantidad es requerida</mat-error>           
-   </mat-form-field>
-
+   
    <mat-form-field class="full-width">
       <input matInput placeholder="Descripción" formControlName="description">
    </mat-form-field>
-          
+             
    <mat-form-field>
       <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="date.invalid">Fecha es requerida</mat-error>
    </mat-form-field>
-
+   
    <mat-form-field>
       <input matInput placeholder="Time" formControlName="time">
    </mat-form-field>
-
+   
    <button mat-button (click)="sendForm()">Guardar</button>
 </form>

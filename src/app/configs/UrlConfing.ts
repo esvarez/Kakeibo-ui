@@ -9,6 +9,7 @@ export class UrlConfig {
    users: String = '/users'
    accounts: String = '/accounts'
    movements: String = '/movements'
+   categories: String = '/categories'
    constructor() {
       if (environment.production) {
          this.host = 'urlProd'   
