@@ -9,7 +9,7 @@ import { State } from 'src/app/reducers';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { SetCategoriesAction } from '../../user.actions';
 import { MovementType } from 'src/app/shared/enums/movement-type';
-import { filter } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'kui-movement-form-dialog',
@@ -45,7 +45,9 @@ export class MovementFormDialogComponent implements OnInit, OnDestroy {
       })      
     if (this.allCategories == null){
       this.setCategories()
-    }   
+    } else {
+      this.filterCategories()
+    }
   }
 
   movementForm = new FormGroup({
@@ -67,8 +69,10 @@ export class MovementFormDialogComponent implements OnInit, OnDestroy {
   get time() { return this.movementForm.get('time') }
 
   private setCategories() {
-    this.categoryService.getCategoriesFromUserId(this.userId)      
+    this.categoryService.getCategoriesFromUserId(this.userId)       
+      .pipe( take(1) )           
       .subscribe(res => { 
+        res.sort( (a, b) => (a.name > b.name)? 1 : -1 )                
         console.log('Consulando Categorias DB')                        
         this.store.dispatch(new SetCategoriesAction(res))
         this.filterCategories()
@@ -97,9 +101,9 @@ export class MovementFormDialogComponent implements OnInit, OnDestroy {
     this.filterCategories()
   }
 
-  private filterCategories(){
+  private filterCategories(){    
     this.categories = this.allCategories
-      .filter(category => category.category === this.movementType.value )     
+      .filter(category => category.category === this.movementType.value )         
   }
 
   ngOnDestroy(): void {

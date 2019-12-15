@@ -11,8 +11,8 @@ export interface UserState {
 }
 
 const initState: UserState = {
-   //user: {},
-   user: { id: 1, user:'init'},
+   user: null,
+   //user: { id: 1, user:'init'},
    accountSelected: null,
    accounts: null,
    categories: null,

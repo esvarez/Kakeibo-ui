@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { MovementService } from 'src/app/core/services/movement.service';
 import { SetCurrentAccountAction, SetAccountsAction } from '../../user.actions';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'kui-select-account',
@@ -44,12 +45,14 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
     this.store.dispatch(new SetCurrentAccountAction(account))
   }
 
-  private setAccounts() {    
+  private setAccounts() {        
     this.accountService.getAccountsFromUserId(this.userId)
+      .pipe( take(1) )
       .subscribe(res => {
+        res.sort( (a, b) => (a.name > b.name)? 1 : -1 )
         console.log('Consulta Cuentas DB')                
         this.store.dispatch(new SetAccountsAction(res))        
-      })      
+      })
   }
 
 }
