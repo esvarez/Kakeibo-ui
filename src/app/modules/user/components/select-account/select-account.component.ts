@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { MovementService } from 'src/app/core/services/movement.service';
 import { SetCurrentAccountAction, SetAccountsAction } from '../../user.actions';
 import { take } from 'rxjs/operators';
+import * as fromUser from 'src/app/modules/user/user.reducer'
 
 @Component({
   selector: 'kui-select-account',
@@ -23,10 +24,10 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
 
   constructor(private accountService: AccountService,
               private movementService: MovementService,
-              private store: Store<State>) { }
+              private store: Store<fromUser.State>) { }
 
   ngOnInit() {        
-    this.userSubscription = this.store.select('userState')
+    this.userSubscription = this.store.select('authState')
       .subscribe(state => this.userId = state.user.id )
     this.accuntSubscription = this.store.select('userState')
       .subscribe(state => this.accounts = state.accounts )      

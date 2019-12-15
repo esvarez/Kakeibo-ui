@@ -17,6 +17,9 @@ import { MovementFormDialogComponent } from './components/movement-form-dialog/m
 import { FilterCategoryPipe } from 'src/app/shared/pipes/filter-category.pipe';
 import { AuthModule } from '../auth/auth.module';
 import { UserRoutingModules } from './user-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './user.reducer';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { UserRoutingModules } from './user-routing.module';
     MovementButtonsComponent,        
     ExpenseFormComponent,
     MovementFormDialogComponent,    
-    MovementFormDialogComponent
+    MovementFormDialogComponent,
+    StoreModule.forFeature('userState', userReducer)
   ],
   imports: [
     AuthModule,

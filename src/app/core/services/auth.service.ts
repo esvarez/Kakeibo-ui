@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models';
 import { Store } from '@ngrx/store';
-import { SetUserAction } from 'src/app/modules/user/user.actions';
 import { take } from 'rxjs/operators';
 import { State } from 'src/app/reducers';
+import { SetUserAction } from 'src/app/modules/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class AuthService {
 
   isAuth(): boolean {           
     let userAuth
-    this.store.select('userState')
+    this.store.select('authState')
     .pipe( take(1) )
     .subscribe(state => {       
       userAuth = state.user
@@ -47,7 +47,7 @@ export class AuthService {
 
   isAuthLoad(){
     let userAuth
-    this.store.select('userState')
+    this.store.select('authState')
       .pipe( take(1) )
       .subscribe(state => userAuth = state.user)      
     if (userAuth != null) {      

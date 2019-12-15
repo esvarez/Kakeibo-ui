@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Movement } from 'src/app/shared/models';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { State } from 'src/app/reducers';
-import { filter } from 'rxjs/operators';
 import { MovementService } from 'src/app/core/services/movement.service';
+import * as fromUser from 'src/app/modules/user/user.reducer'
 
 @Component({
   selector: 'kui-movements',
@@ -25,7 +24,7 @@ export class MovementsComponent implements OnInit {
     { id: 1, amount: 1250, category:{name:'retiro', category:'expense', imageUrl:'fastfood' }, date: '2019-03-15' },
   ]
 
-  constructor(private store: Store<State>,
+  constructor(private store: Store<fromUser.State>,
               private movementService: MovementService) { }
 
   ngOnInit() {
