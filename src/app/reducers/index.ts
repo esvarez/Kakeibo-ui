@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
 
 export interface State {
   uiStete: fromUi.State
-  authState: fromAuth.State
+  authState: fromAuth.AuthState
   //userState: fromUser.UserState
 }
 

@@ -17,8 +17,7 @@ export class AuthService {
 
   login() {
     const newUser = new User({id:1, user: 'UserTest'})
-    this.store.dispatch(new SetUserAction(newUser))
-    this.isUserAuth = true
+    this.store.dispatch(new SetUserAction(newUser))    
     this.router.navigate(['/'])
   }
 

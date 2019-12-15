@@ -14,7 +14,6 @@ import { MovementButtonsComponent } from './components/movement-buttons/movement
 import { ExpenseFormComponent } from './components/expense-form/expense-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MovementFormDialogComponent } from './components/movement-form-dialog/movement-form-dialog.component';
-import { FilterCategoryPipe } from 'src/app/shared/pipes/filter-category.pipe';
 import { AuthModule } from '../auth/auth.module';
 import { UserRoutingModules } from './user-routing.module';
 import { StoreModule } from '@ngrx/store';
@@ -32,7 +31,6 @@ import { userReducer } from './user.reducer';
     ExpenseFormComponent,
     MovementFormDialogComponent,    
     MovementFormDialogComponent,
-    StoreModule.forFeature('userState', userReducer)
   ],
   imports: [
     AuthModule,
@@ -41,7 +39,8 @@ import { userReducer } from './user.reducer';
     ChartsModule,    
     MaterialModule,
     UserRoutingModules,
-    ReactiveFormsModule    
+    ReactiveFormsModule,
+    StoreModule.forFeature('userState', userReducer)
   ],
   entryComponents: [
     MovementFormDialogComponent
