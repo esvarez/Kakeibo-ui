@@ -12,6 +12,7 @@ import { MovementButtonsComponent } from './components/movement-buttons/movement
 import { ExpenseFormComponent } from './components/expense-form/expense-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovementFormDialogComponent } from './components/movement-form-dialog/movement-form-dialog.component';
+import { FilterCategoryPipe } from 'src/app/shared/pipes/filter-category.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MovementFormDialogComponent } from './components/movement-form-dialog/m
     MovementButtonsComponent,        
     ExpenseFormComponent,
     MovementFormDialogComponent,    
-    MovementFormDialogComponent
+    MovementFormDialogComponent,
+    FilterCategoryPipe
   ],
   imports: [
     CommonModule,

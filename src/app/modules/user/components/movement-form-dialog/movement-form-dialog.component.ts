@@ -9,6 +9,7 @@ import { State } from 'src/app/reducers';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { SetCategoriesAction } from '../../user.actions';
 import { MovementType } from 'src/app/shared/enums/movement-type';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'kui-movement-form-dialog',
@@ -30,19 +31,21 @@ export class MovementFormDialogComponent implements OnInit, OnDestroy {
               private store: Store<State>,
               public dialogRef: MatDialogRef<MovementFormDialogComponent>) { }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.userSubscription = this.store.select('userState')
-      .subscribe(state => this.userId = state.user.id )
+      .subscribe(state => this.userId = state.user.id )    
     this.selectsSubscription = this.store.select('userState')
       .subscribe(state => {        
         this.accounts = state.accounts 
         this.allCategories = state.categories        
         this.movementType.setValue(state.movementType)
-        this.account.setValue(state.accountSelected.id)
-      })     
+        if (state.accountSelected != null) {
+          this.account.setValue(state.accountSelected.id)          
+        }        
+      })      
     if (this.allCategories == null){
       this.setCategories()
-    }
+    }   
   }
 
   movementForm = new FormGroup({
@@ -66,8 +69,9 @@ export class MovementFormDialogComponent implements OnInit, OnDestroy {
   private setCategories() {
     this.categoryService.getCategoriesFromUserId(this.userId)      
       .subscribe(res => { 
-        console.log('Consulando Categorias DB')                
+        console.log('Consulando Categorias DB')                        
         this.store.dispatch(new SetCategoriesAction(res))
+        this.filterCategories()
       })
   }
 
@@ -87,6 +91,15 @@ export class MovementFormDialogComponent implements OnInit, OnDestroy {
     } else {
       console.log(this.movementForm.value)
     }
+  }
+
+  changeCategories(){        
+    this.filterCategories()
+  }
+
+  private filterCategories(){
+    this.categories = this.allCategories
+      .filter(category => category.category === this.movementType.value )     
   }
 
   ngOnDestroy(): void {
