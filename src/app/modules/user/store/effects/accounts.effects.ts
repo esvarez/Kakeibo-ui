@@ -19,8 +19,8 @@ export class AccountsEffects {
          switchMap(() => {
             return this.accountService.getAccountsFromUserId(1)
             .pipe(
-               map( accounts => new accountsActions.LoadAccountsSuccess(accounts)),
-               catchError( error => of(new accountsActions.LoadAccountsFail(error)))
+               map( accounts => new accountsActions.LoadAccountsSuccessAction(accounts)),
+               catchError( error => of(new accountsActions.LoadAccountsFailAction(error)))
             )
          })
       )

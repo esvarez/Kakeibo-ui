@@ -17,7 +17,7 @@ const initState: AccountsState = {
    isLoaded: null
 }
 
-export function accountsReducer(state = initState, action: fromAccounts.actions): AccountsState {
+export function accountsReducer(state = initState, action: fromAccounts.accountActions): AccountsState {
    switch(action.type) {
       case fromAccounts.LOAD_ACCOUNTS:
          return {
@@ -29,7 +29,11 @@ export function accountsReducer(state = initState, action: fromAccounts.actions)
             ... state,
             isLoading: false,
             isLoaded: true,
-            accounts: { ... action.accounts }
+            accounts: [
+               ... action.accounts.map(account => {
+                  return { ... account }
+               })
+            ]  
          }
       case fromAccounts.LOAD_ACCOUNTS_FAIL:
             return {
