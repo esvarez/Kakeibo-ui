@@ -8,6 +8,7 @@ import { MovementService } from 'src/app/core/services/movement.service';
 import { SetCurrentAccountAction, SetAccountsAction } from '../../user.actions';
 import { take } from 'rxjs/operators';
 import * as fromUser from 'src/app/modules/user/user.reducer'
+import { LoadAccounts } from '../../store/actions';
 
 @Component({
   selector: 'kui-select-account',
@@ -46,7 +47,10 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
     this.store.dispatch(new SetCurrentAccountAction(account))
   }
 
-  private setAccounts() {        
+  private setAccounts() {   
+    
+    this.store.dispatch(new LoadAccounts())
+    /*
     this.accountService.getAccountsFromUserId(this.userId)
       .pipe( take(1) )
       .subscribe(res => {
@@ -54,6 +58,7 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
         console.log('Consulta Cuentas DB')                
         this.store.dispatch(new SetAccountsAction(res))        
       })
+      */
   }
 
 }

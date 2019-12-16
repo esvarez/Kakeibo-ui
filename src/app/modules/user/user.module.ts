@@ -18,6 +18,8 @@ import { AuthModule } from '../auth/auth.module';
 import { UserRoutingModules } from './user-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { effectsArr } from './store/effects';
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { userReducer } from './user.reducer';
     MaterialModule,
     UserRoutingModules,
     ReactiveFormsModule,
-    StoreModule.forFeature('userState', userReducer)
+    StoreModule.forFeature('userState', userReducer),    
   ],
   entryComponents: [
     MovementFormDialogComponent

@@ -22,6 +22,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { effectsArr } from './modules/user/store/effects';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
         strictActionImmutability: true
       }
     }),
+    EffectsModule.forRoot(effectsArr),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production

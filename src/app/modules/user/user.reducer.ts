@@ -58,8 +58,7 @@ export function userReducer(state = initState, action: fromUser.actions): UserSt
             accounts: null,
             categories: null,
             movementType: null
-         }
-      
+         }      
       default:
          return state
    }
