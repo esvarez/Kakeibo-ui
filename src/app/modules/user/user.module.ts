@@ -17,10 +17,14 @@ import { MovementFormDialogComponent } from './components/movement-form-dialog/m
 import { AuthModule } from '../auth/auth.module';
 import { UserRoutingModules } from './user-routing.module';
 import { StoreModule } from '@ngrx/store';
+<<<<<<< HEAD
+import { userReducer } from './user.reducer';
+=======
 import { userReducer } from './store/reducers/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { effectsArr } from './store/effects';
 import { accountsReducer } from './store/reducers/accounts.reducer';
+>>>>>>> master
 
 
 @NgModule({
@@ -43,9 +47,13 @@ import { accountsReducer } from './store/reducers/accounts.reducer';
     MaterialModule,
     UserRoutingModules,
     ReactiveFormsModule,
+<<<<<<< HEAD
+    StoreModule.forFeature('userState', userReducer)
+=======
     StoreModule.forFeature('userState', userReducer),  
     StoreModule.forFeature('accountsState', accountsReducer),
     EffectsModule.forFeature(effectsArr)  
+>>>>>>> master
   ],
   entryComponents: [
     MovementFormDialogComponent

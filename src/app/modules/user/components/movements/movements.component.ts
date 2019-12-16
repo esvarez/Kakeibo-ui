@@ -3,7 +3,11 @@ import { Movement } from 'src/app/shared/models';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { MovementService } from 'src/app/core/services/movement.service';
+<<<<<<< HEAD
+import * as fromUser from 'src/app/modules/user/user.reducer'
+=======
 import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
+>>>>>>> master
 
 @Component({
   selector: 'kui-movements',
