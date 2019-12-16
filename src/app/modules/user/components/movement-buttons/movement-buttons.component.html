@@ -1,6 +1,4 @@
-<a mat-list-item routerLink="/register-movement">
-   <button mat-flat-button color="primary" >Ingreso</button>
-</a>
-<a mat-list-item routerLink="/register-movement">
-   <button mat-flat-button color="accent" >Gasto</button>
-</a>
+
+<button mat-flat-button color="primary" (click)='openDialog(INCOME)' >Ingreso</button>
+<button mat-flat-button color="accent" (click)='openDialog(EXPENSE)'>Gasto</button>
+

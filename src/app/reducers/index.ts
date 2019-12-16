@@ -6,17 +6,27 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import * as fromUi from '../shared/ui.reducer'
-import * as fromUser from '../modules/user/user.reducer'
+import * as fromAuth from '../modules/auth/auth.reducer'
 import { environment } from '../../environments/environment';
 
 export interface State {
-  ui: fromUi.State
-  user: fromUser.UserState
+  uiStete: fromUi.State
+  authState: fromAuth.AuthState
+  //userState: fromUser.UserState
 }
 
 export const reducers: ActionReducerMap<State> = {
-  ui: fromUi.uiReducer,
-  user: fromUser.userReducer  
+  uiStete: fromUi.uiReducer,
+  authState: fromAuth.authReducer
+  //userState: fromUser.userReducer  
 }
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
+  return function (state: State, action: any): State {
+    console.log('state', state)
+    console.log('action', action)
+    return reducer(state, action)
+  }
+}
+
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [logger] : [];

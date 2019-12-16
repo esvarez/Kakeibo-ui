@@ -1,8 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
+//Angular modules
 import { NgModule } from '@angular/core';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserModule } from '@angular/platform-browser';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 //Modulos
 import { AppRountingModule } from './app-routing.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { UserModule } from './modules/user/user.module';
 
 // NGRX
 import { StoreModule } from '@ngrx/store';
@@ -10,40 +16,29 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 
 import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { LoginComponent } from './modules/home/login/login.component';
-import { RegisterComponent } from './modules/home/register/register.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { IndexComponent } from './modules/home/index/index.component';
-import { LedgerComponent } from './modules/home/ledger/ledger.component';
-import { UserModule } from './modules/user/user.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { effectsArr } from './modules/user/store/effects';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 @NgModule({
   declarations: [
     AppComponent,    
-    LoginComponent,
-    RegisterComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent,
-    IndexComponent,
-    LedgerComponent
+    SidebarComponent
   ],
-  imports: [    
-    UserModule,
-    FormsModule,
-    LayoutModule,
+  imports: [   
+    // TODO LazyLoad Auth 
+    AuthModule,   
     BrowserModule,
     HttpClientModule,
-    AppRountingModule,
-    ReactiveFormsModule,
+    AppRountingModule,    
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     StoreModule.forRoot(reducers, {
@@ -56,7 +51,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

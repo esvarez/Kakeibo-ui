@@ -16,6 +16,8 @@ import {
   MatInputModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatRadioModule,
+  MatDividerModule,
 } from '@angular/material'
 
 @NgModule({
@@ -37,7 +39,9 @@ import {
     MatButtonToggleModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule,
+    MatDividerModule
   ],
   providers: [
     MatDatepickerModule
