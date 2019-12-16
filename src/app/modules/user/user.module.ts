@@ -42,7 +42,8 @@ import { effectsArr } from './store/effects';
     MaterialModule,
     UserRoutingModules,
     ReactiveFormsModule,
-    StoreModule.forFeature('userState', userReducer),    
+    StoreModule.forFeature('userState', userReducer),  
+    EffectsModule.forFeature(effectsArr)  
   ],
   entryComponents: [
     MovementFormDialogComponent
