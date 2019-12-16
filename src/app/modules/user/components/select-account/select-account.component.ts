@@ -5,9 +5,16 @@ import { State } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { MovementService } from 'src/app/core/services/movement.service';
+<<<<<<< HEAD
 import { SetCurrentAccountAction, SetAccountsAction } from '../../user.actions';
 import { take } from 'rxjs/operators';
 import * as fromUser from 'src/app/modules/user/user.reducer'
+=======
+import { SetCurrentAccountAction, LoadAccountsAction } from '../../store/actions';
+import { take } from 'rxjs/operators';
+import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
+import { UserModuleState } from '../../store/reducers';
+>>>>>>> master
 
 @Component({
   selector: 'kui-select-account',
@@ -22,14 +29,22 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription
   private accuntSubscription: Subscription
 
+<<<<<<< HEAD
   constructor(private accountService: AccountService,
               private movementService: MovementService,
               private store: Store<fromUser.State>) { }
+=======
+  constructor(private store: Store<UserModuleState>) { }
+>>>>>>> master
 
   ngOnInit() {        
     this.userSubscription = this.store.select('authState')
       .subscribe(state => this.userId = state.user.id )
+<<<<<<< HEAD
     this.accuntSubscription = this.store.select('userState')
+=======
+    this.accuntSubscription = this.store.select('accountsState')
+>>>>>>> master
       .subscribe(state => this.accounts = state.accounts )      
     if (this.accounts == null) {
       this.setAccounts()
@@ -46,6 +61,7 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
     this.store.dispatch(new SetCurrentAccountAction(account))
   }
 
+<<<<<<< HEAD
   private setAccounts() {        
     this.accountService.getAccountsFromUserId(this.userId)
       .pipe( take(1) )
@@ -54,6 +70,10 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
         console.log('Consulta Cuentas DB')                
         this.store.dispatch(new SetAccountsAction(res))        
       })
+=======
+  private setAccounts() {    
+    this.store.dispatch(new LoadAccountsAction())   
+>>>>>>> master
   }
 
 }

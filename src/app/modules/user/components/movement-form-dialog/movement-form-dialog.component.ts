@@ -6,10 +6,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CategoryService } from 'src/app/core/services/category.service';
+<<<<<<< HEAD
 import { SetCategoriesAction } from '../../user.actions';
 import { MovementType } from 'src/app/shared/enums/movement-type';
 import { take } from 'rxjs/operators';
 import * as fromUser from 'src/app/modules/user/user.reducer'
+=======
+import { SetCategoriesAction } from '../../store/actions';
+import { MovementType } from 'src/app/shared/enums/movement-type';
+import { take } from 'rxjs/operators';
+import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
+>>>>>>> master
 
 @Component({
   selector: 'kui-movement-form-dialog',

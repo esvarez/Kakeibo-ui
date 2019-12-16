@@ -3,7 +3,11 @@ import { MatDialog } from '@angular/material';
 import { MovementFormDialogComponent } from '../movement-form-dialog/movement-form-dialog.component';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/reducers';
+<<<<<<< HEAD
 import { SetMovementTypeAction } from '../../user.actions';
+=======
+import { SetMovementTypeAction } from '../../store/actions';
+>>>>>>> master
 import { MovementType } from 'src/app/shared/enums/movement-type';
 
 @Component({

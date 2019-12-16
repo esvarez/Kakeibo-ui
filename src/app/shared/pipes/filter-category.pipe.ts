@@ -3,7 +3,7 @@ import { Category } from '../models';
 import { MovementType } from '../enums/movement-type';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import * as fromUser from 'src/app/modules/user/user.reducer'
+import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
 
 @Pipe({
   name: 'filterCategory'
