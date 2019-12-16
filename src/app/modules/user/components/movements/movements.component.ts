@@ -3,11 +3,8 @@ import { Movement } from 'src/app/shared/models';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { MovementService } from 'src/app/core/services/movement.service';
-<<<<<<< HEAD
-import * as fromUser from 'src/app/modules/user/user.reducer'
-=======
-import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
->>>>>>> master
+import { UserModuleState } from '../../store/reducers';
+
 
 @Component({
   selector: 'kui-movements',
@@ -28,11 +25,11 @@ export class MovementsComponent implements OnInit {
     { id: 1, amount: 1250, category:{name:'retiro', category:'expense', imageUrl:'fastfood' }, date: '2019-03-15' },
   ]
 
-  constructor(private store: Store<fromUser.State>,
+  constructor(private store: Store<UserModuleState>,
               private movementService: MovementService) { }
 
   ngOnInit() {
-    this.accountSubscriber = this.store.select('userState')    
+    this.accountSubscriber = this.store.select('accountsState')    
       .subscribe(state => { 
         this.accountId = state.accountSelected && state.accountSelected.id || 0 
         this.movementsSubsciber = this.movementService

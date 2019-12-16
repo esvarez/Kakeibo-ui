@@ -6,17 +6,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CategoryService } from 'src/app/core/services/category.service';
-<<<<<<< HEAD
-import { SetCategoriesAction } from '../../user.actions';
-import { MovementType } from 'src/app/shared/enums/movement-type';
-import { take } from 'rxjs/operators';
-import * as fromUser from 'src/app/modules/user/user.reducer'
-=======
 import { SetCategoriesAction } from '../../store/actions';
-import { MovementType } from 'src/app/shared/enums/movement-type';
 import { take } from 'rxjs/operators';
-import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
->>>>>>> master
+import { UserModuleState } from '../../store/reducers';
+
 
 @Component({
   selector: 'kui-movement-form-dialog',
@@ -31,25 +24,29 @@ export class MovementFormDialogComponent implements OnInit, OnDestroy {
   private allCategories: Category[] = null
   private userSubscription: Subscription
   private selectsSubscription: Subscription
+  private accountsSubscriber: Subscription
   
 
   constructor(private movementService: MovementService,
               private categoryService: CategoryService,
-              private store: Store<fromUser.State>,
+              private store: Store<UserModuleState>,
               public dialogRef: MatDialogRef<MovementFormDialogComponent>) { }
 
   ngOnInit() {    
     this.userSubscription = this.store.select('authState')
       .subscribe(state => this.userId = state.user.id )    
     this.selectsSubscription = this.store.select('userState')
-      .subscribe(state => {        
-        this.accounts = state.accounts 
+      .subscribe(state => {                
         this.allCategories = state.categories        
         this.movementType.setValue(state.movementType)
         if (state.accountSelected != null) {
           this.account.setValue(state.accountSelected.id)          
         }        
       })      
+    this.accountsSubscriber = this.store.select('accountsState')
+        .subscribe(state => {
+          this.accounts = state.accounts
+        })
     if (this.allCategories == null){
       this.setCategories()
     } else {

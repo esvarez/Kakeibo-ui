@@ -4,7 +4,8 @@ import * as fromAccounts from '../actions/accounts.action'
 import { Account } from 'src/app/shared/models'
 
 export interface AccountsState {
-   accounts: Account[],
+   accounts: Account[]
+   accountSelected: Account
    error: any
    isLoading: Boolean
    isLoaded: Boolean
@@ -12,6 +13,7 @@ export interface AccountsState {
 
 const initState: AccountsState = {
    accounts: null,
+   accountSelected: null,
    error: null,
    isLoading: null,
    isLoaded: null
@@ -42,6 +44,11 @@ export function accountsReducer(state = initState, action: fromAccounts.accountA
                isLoaded: false,
                error: { ... action.payload }
             }
+      case fromAccounts.SET_CURRENT_ACCOUNT:
+         return {
+            ... state,
+            accountSelected: { ... action.account }
+         }
       default:
          return state
    }
