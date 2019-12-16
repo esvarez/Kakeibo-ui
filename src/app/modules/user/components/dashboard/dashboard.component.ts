@@ -4,7 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/reducers';
-import { CloseSesionAction } from '../../user.actions';
+import { CloseSesionAction } from '../../store/actions';
 
 @Component({
   selector: 'kui-dashboard',

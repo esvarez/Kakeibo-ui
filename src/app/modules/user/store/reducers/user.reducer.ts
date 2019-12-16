@@ -1,4 +1,4 @@
-import * as fromUser from './user.actions'
+import * as fromUser from '../actions/user.actions'
 import { User, Account, Category } from 'src/app/shared/models';
 import { MovementType } from 'src/app/shared/enums/movement-type';
 import { State } from 'src/app/reducers'
@@ -22,22 +22,8 @@ const initState: UserState = {
    movementType: null
 }
 
-export function userReducer(state = initState, action: fromUser.actions): UserState {
-   switch(action.type) {            
-      case fromUser.SET_CURRENT_ACCOUNT:
-         return {
-            ... state, 
-            accountSelected: { ... action.account }            
-         }
-      case fromUser.SET_ACCOUNTS:
-         return {            
-            ... state , 
-            accounts: [
-               ... action.accounts.map( account => {
-                  return { ... account }
-               })
-            ] 
-         }
+export function userReducer(state = initState, action: fromUser.userActions): UserState {
+   switch(action.type) {                 
       case fromUser.SET_CATEGORIES:
          return {
             ... state,
@@ -58,8 +44,7 @@ export function userReducer(state = initState, action: fromUser.actions): UserSt
             accounts: null,
             categories: null,
             movementType: null
-         }
-      
+         }      
       default:
          return state
    }
