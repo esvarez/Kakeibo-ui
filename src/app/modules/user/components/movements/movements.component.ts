@@ -3,8 +3,8 @@ import { Movement } from 'src/app/shared/models';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { MovementService } from 'src/app/core/services/movement.service';
-import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
 import { UserModuleState } from '../../store/reducers';
+
 
 @Component({
   selector: 'kui-movements',
