@@ -5,7 +5,10 @@ import { State } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { MovementService } from 'src/app/core/services/movement.service';
-import { SetCurrentAccountAction, SetAccountsAction } from '../../user.actions';
+import { SetCurrentAccountAction, LoadAccountsAction } from '../../store/actions';
+import { take } from 'rxjs/operators';
+import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
+import { UserModuleState } from '../../store/reducers';
 
 @Component({
   selector: 'kui-select-account',
@@ -20,14 +23,12 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription
   private accuntSubscription: Subscription
 
-  constructor(private accountService: AccountService,
-              private movementService: MovementService,
-              private store: Store<State>) { }
+  constructor(private store: Store<UserModuleState>) { }
 
   ngOnInit() {        
-    this.userSubscription = this.store.select('userState')
+    this.userSubscription = this.store.select('authState')
       .subscribe(state => this.userId = state.user.id )
-    this.accuntSubscription = this.store.select('userState')
+    this.accuntSubscription = this.store.select('accountsState')
       .subscribe(state => this.accounts = state.accounts )      
     if (this.accounts == null) {
       this.setAccounts()
@@ -45,11 +46,7 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
   }
 
   private setAccounts() {    
-    this.accountService.getAccountsFromUserId(this.userId)
-      .subscribe(res => {
-        console.log('Consulta Cuentas DB')                
-        this.store.dispatch(new SetAccountsAction(res))        
-      })      
+    this.store.dispatch(new LoadAccountsAction())   
   }
 
 }

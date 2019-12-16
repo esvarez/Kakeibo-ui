@@ -6,8 +6,16 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/">Inicio</a>
-      <a mat-list-item routerLink="/login">login</a>
-      <a mat-list-item (click)="onCloseSesion()">Cerrar Sesion</a>
+      <a mat-list-item routerLink="/">Movimientos</a>
+      <a mat-list-item routerLink="/">Cuentas</a>
+      <a mat-list-item routerLink="/">Presupuesto</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/">Informes</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/">Opciones</a>
+      <a mat-list-item routerLink="/login" (click)="onCloseSesion()">Cerrar Sesion</a>
+      <a mat-list-item routerLink="/" (click)="onCloseSesion()">Cerrar Sesion</a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

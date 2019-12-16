@@ -2,8 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Category } from '../models';
 import { MovementType } from '../enums/movement-type';
 import { Store } from '@ngrx/store';
-import { State } from 'src/app/reducers';
 import { Subscription } from 'rxjs';
+import * as fromUser from 'src/app/modules/user/store/reducers/user.reducer'
 
 @Pipe({
   name: 'filterCategory'
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class FilterCategoryPipe implements PipeTransform {
   private movementType: MovementType
   private subscriber: Subscription
-  constructor(private store:Store<State>) {}
+  constructor(private store:Store<fromUser.State>) {}
 
   transform(categories: Category[]): Category[] {
     console.log(categories)
