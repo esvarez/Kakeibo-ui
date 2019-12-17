@@ -5,7 +5,7 @@ import { MaterialModule } from '../material/material.module';
 
 import { SelectAccountComponent } from './components/select-account/select-account.component';
 import { IndexUserComponent } from './pages/index-user/index-user.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router'
 import { ChartsModule } from 'ng2-charts';
 import { ExpenseChartComponent } from './components/expense-chart/expense-chart.component';
@@ -21,6 +21,8 @@ import { userReducer } from './store/reducers/user.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { effectsArr } from './store/effects';
 import { accountsReducer } from './store/reducers/accounts.reducer';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { accountsReducer } from './store/reducers/accounts.reducer';
     MovementButtonsComponent,        
     ExpenseFormComponent,
     MovementFormDialogComponent,    
-    MovementFormDialogComponent,
+    MovementFormDialogComponent, ProfileCardComponent, UserMenuComponent,
   ],
   imports: [
     AuthModule,
