@@ -3,9 +3,7 @@ import { User, Account, Category } from 'src/app/shared/models';
 import { MovementType } from 'src/app/shared/enums/movement-type';
 import { State } from 'src/app/reducers'
 
-export interface UserState {
-   accountSelected: Account,
-   accounts: Account[],
+export interface UserState {   
    categories: Category[],
    movementType: MovementType
 }
@@ -15,9 +13,6 @@ export interface State extends State {
 }
 
 const initState: UserState = {   
-   //user: { id: 1, user:'init'},
-   accountSelected: null,
-   accounts: null,
    categories: null,
    movementType: null
 }
@@ -39,9 +34,7 @@ export function userReducer(state = initState, action: fromUser.userActions): Us
             movementType: action.movementType
          }
       case fromUser.CLOSE_SESION:
-         return {
-            accountSelected: null,
-            accounts: null,
+         return {            
             categories: null,
             movementType: null
          }      

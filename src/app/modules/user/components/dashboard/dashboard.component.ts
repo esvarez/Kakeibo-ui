@@ -4,7 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/reducers';
-import { CloseSesionAction } from '../../store/actions';
+import { UnsetUserAction } from 'src/app/modules/auth/auth.actions';
 
 @Component({
   selector: 'kui-dashboard',
@@ -23,7 +23,7 @@ export class DashboardComponent {
               private store: Store<State>) {}
 
   onCloseSesion() {
-    this.store.dispatch(new CloseSesionAction())
+    this.store.dispatch(new UnsetUserAction())
   }
   
 }
