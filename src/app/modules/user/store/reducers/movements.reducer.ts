@@ -27,6 +27,7 @@ export function movementReducer(state = initState, action: fromMovements.movemen
             isLoading: true
          }
       case fromMovements.LOAD_MOVEMENTS_SUCCESS:
+         console.log('success', action)
          return {
             ... state,
             isLoading: false,

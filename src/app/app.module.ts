@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { effectsArr } from './modules/user/store/effects';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { AuthEffects } from './modules/auth/auth.effects';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { AppEffects } from './app.effects';
       maxAge: 25,
       logOnly: environment.production
     }),
-    EffectsModule.forRoot([AppEffects])
+    EffectsModule.forRoot([AppEffects, AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

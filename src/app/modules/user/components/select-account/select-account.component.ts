@@ -29,9 +29,11 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
     this.userSubscription = this.store.select('authState')
       .subscribe(state => this.userId = state.user.id )
     this.accuntSubscription = this.store.select('accountsState')
-      .subscribe(state => this.accounts = state.accounts )      
+      .subscribe(state => this.accounts = state.accounts )
+      console.log(this.accounts);
+            
     if (this.accounts == null) {
-      this.setAccounts()
+      this.setAccounts(this.userId)
     }
   }
 
@@ -45,8 +47,9 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
     this.store.dispatch(new SetCurrentAccountAction(account))
   }
 
-  private setAccounts() {    
-    this.store.dispatch(new LoadAccountsAction())   
+  private setAccounts(id: Number) { 
+    console.log(id)   
+    this.store.dispatch(new LoadAccountsAction(id))   
   }
 
 }
