@@ -5,21 +5,18 @@ import { Store } from '@ngrx/store';
 import { MovementService } from 'src/app/core/services/movement.service';
 import { UserModuleState } from '../../store/reducers';
 
-
 @Component({
-  selector: 'kui-movements',
-  templateUrl: './movements.component.html',
-  styleUrls: ['./movements.component.scss']
+  selector: 'kui-last-movements',
+  templateUrl: './last-movements.component.html',
+  styleUrls: ['./last-movements.component.scss']
 })
-export class MovementsComponent implements OnInit {
+export class LastMovementsComponent implements OnInit {
 
-  
   private accountId: Number
   private movements: Movement[] 
   private accountSubscriber: Subscription
   private movementsSubsciber2: Subscription  
   private movementsSubsciber: Subscription  
-
 
   constructor(private store: Store<UserModuleState>,
               private movementService: MovementService) { }
@@ -35,5 +32,4 @@ export class MovementsComponent implements OnInit {
       },
       err => console.log('EE:', err) )    
   }  
-
 }

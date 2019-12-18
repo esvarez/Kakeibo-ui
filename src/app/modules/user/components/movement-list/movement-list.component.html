@@ -1,5 +1,5 @@
 <mat-nav-list>
-   <h3 mat-subheader>Ultimos Gastos</h3>
+   <h3 mat-subheader>{{ title }}</h3>
    <div *ngIf='!accountId'>Seleccione una cuenta</div>
    <mat-list-item *ngFor='let movement of movements' class="item">
       <mat-icon mat-list-icon>{{ movement.category.imageURL }}</mat-icon>      

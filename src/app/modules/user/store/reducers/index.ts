@@ -8,3 +8,7 @@ export interface UserModuleState extends State{
    accountsState: AccountsState,
    movementState: MovementState
 }
+
+export { userReducer } from './user.reducer';
+export { accountsReducer } from './accounts.reducer';
+export { movementReducer } from './movements.reducer'

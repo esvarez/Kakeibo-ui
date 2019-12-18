@@ -18,6 +18,7 @@ import {
   MatNativeDateModule,
   MatRadioModule,
   MatDividerModule,
+  MatProgressBarModule,
 } from '@angular/material'
 
 @NgModule({
@@ -41,7 +42,8 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressBarModule
   ],
   providers: [
     MatDatepickerModule

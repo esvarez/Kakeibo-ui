@@ -2,7 +2,7 @@ import { Movement } from 'src/app/shared/models';
 import * as fromMovements from '../actions/movements.action'
 
 export interface MovementState {
-   movemets: Movement[]
+   lastMovemets: Movement[]
    dates: any
    period: String
    error: any
@@ -11,7 +11,7 @@ export interface MovementState {
 }
 
 const initState: MovementState = {
-   movemets: null,
+   lastMovemets: null,
    period: null,
    dates: null,
    error: null,
@@ -31,7 +31,7 @@ export function movementReducer(state = initState, action: fromMovements.movemen
             ... state,
             isLoading: false,
             isLoaded: true,
-            movemets: { ... action.movements }
+            lastMovemets: { ... action.movements }
          }
       case fromMovements.SET_PERIOD:
          return { 
