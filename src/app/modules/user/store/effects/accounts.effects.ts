@@ -16,9 +16,9 @@ export class AccountsEffects {
    LoadAccounts$ = this.actions$
       .pipe(
          ofType(accountsActions.LOAD_ACCOUNTS),
-         switchMap((id) => {
-            console.log('Se disparo el efecto')
-            return this.accountService.getAccountsFromUserId(id)
+         switchMap(id => {   
+            console.log('Dispachhh')         
+            return this.accountService.getAccountsFromUserId(id['userId'])
             .pipe(
                map( accounts => new accountsActions.LoadAccountsSuccessAction(accounts)),
                catchError( error => of(new accountsActions.LoadAccountsFailAction(error)))

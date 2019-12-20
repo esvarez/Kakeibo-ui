@@ -17,7 +17,8 @@ export class AccountService {
     private store: Store<State>) { }    
 
   public getAccountsFromUserId(userId: Number): Observable<Account[]> {  
-    console.log('Service', userId)    
+    console.log(userId)    
+    console.log('Service del user ')    
     return this.httpClient.get<Account[]>(`${this.apiURL}/users/${userId}/accounts`)
   }
 }
