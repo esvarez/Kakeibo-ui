@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Movement } from 'src/app/shared/models';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -10,8 +10,8 @@ import { UserModuleState } from '../../store/reducers';
   templateUrl: './last-movements.component.html',
   styleUrls: ['./last-movements.component.scss']
 })
-export class LastMovementsComponent implements OnInit {
-
+export class LastMovementsComponent implements OnInit, OnDestroy {
+  
   private accountId: Number
   private movements: Movement[] 
   private accountSubscriber: Subscription
@@ -27,9 +27,12 @@ export class LastMovementsComponent implements OnInit {
         this.accountId = state.accountSelected && state.accountSelected.id || null
         this.movementsSubsciber2 = this.movementService
           .getMovementsFromAccountId(this.accountId)
-          .subscribe(res => this.movements = res)
-          //.subscribe(res => console.log(res))
+          .subscribe(res => this.movements = res)          
       },
       err => console.log('EE:', err) )    
   }  
+
+  ngOnDestroy(): void {
+    this.accountSubscriber.unsubscribe();
+  }
 }

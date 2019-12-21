@@ -9,6 +9,8 @@ export const SET_PERIOD = '[MOVEMENTS] Set period'
 
 export class LoadMovementsAction implements Action {
    readonly type = LOAD_MOVEMENTS
+
+   constructor(public accountId: Number) { }
 }
 
 export class LoadMovementsSuccessAction implements Action {

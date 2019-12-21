@@ -26,13 +26,16 @@ export function movementReducer(state = initState, action: fromMovements.movemen
             ... state,
             isLoading: true
          }
-      case fromMovements.LOAD_MOVEMENTS_SUCCESS:
-         console.log('success', action)
+      case fromMovements.LOAD_MOVEMENTS_SUCCESS:         
          return {
             ... state,
             isLoading: false,
             isLoaded: true,
-            lastMovemets: { ... action.movements }
+            lastMovemets: [
+               ... action.movements.map(movement => {
+                  return { ... movement}
+               })
+            ]
          }
       case fromMovements.SET_PERIOD:
          return { 

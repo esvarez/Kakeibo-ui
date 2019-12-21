@@ -16,9 +16,7 @@ export class AccountService {
   constructor(private httpClient: HttpClient,
     private store: Store<State>) { }    
 
-  public getAccountsFromUserId(userId: Number): Observable<Account[]> {  
-    console.log(userId)    
-    console.log('Service del user ')    
+  public getAccountsFromUserId(userId: Number): Observable<Account[]> {      
     return this.httpClient.get<Account[]>(`${this.apiURL}/users/${userId}/accounts`)
   }
 }

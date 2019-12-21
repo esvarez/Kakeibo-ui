@@ -29,12 +29,7 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
     this.userSubscription = this.store.select('authState')
       .subscribe(state => this.userId = state.user.id )
     this.accuntSubscription = this.store.select('accountsState')
-      .subscribe(state => this.accounts = state.accounts )      
-  /*          
-    if (this.accounts == null) {
-      this.setAccounts(this.userId)
-    }
-    */
+      .subscribe(state => this.accounts = state.accounts )        
   }
 
   ngOnDestroy(): void {
@@ -46,9 +41,4 @@ export class SelectAccountComponent implements OnInit, OnDestroy {
     const account = new Account(this.accountSelected)     
     this.store.dispatch(new SetCurrentAccountAction(account))
   }
-
-  private setAccounts(id: Number) {     
-    this.store.dispatch(new LoadAccountsAction(id))   
-  }
-
 }

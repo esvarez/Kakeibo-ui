@@ -11,10 +11,10 @@ import { UserModuleState } from '../../store/reducers';
 })
 export class MovementListComponent implements OnInit, OnDestroy { 
 
-  private accountId: Number
-  private accountSubscriber: Subscription
-  @Input() movements: Movement[] 
   @Input() title: String
+  @Input() movements: Movement[] 
+  private accountId: Number
+  private accountSubscriber: Subscription   
   
   constructor(private store: Store<UserModuleState>) { }
 
