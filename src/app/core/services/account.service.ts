@@ -15,8 +15,8 @@ export class AccountService {
 
   constructor(private httpClient: HttpClient,
     private store: Store<State>) { }    
-  public getAccountsFromUserId(userId: Number): Observable<Account[]> {  
-    this.store.dispatch(new ActivarLoadingAction())  
+
+  public getAccountsFromUserId(userId: Number): Observable<Account[]> {      
     return this.httpClient.get<Account[]>(`${this.apiURL}/users/${userId}/accounts`)
   }
 }

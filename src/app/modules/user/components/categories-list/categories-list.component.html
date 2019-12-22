@@ -1,0 +1,24 @@
+
+<p>
+      <mat-form-field appearance="outline">
+            <mat-label>Categoria a buscar</mat-label>
+            <input matInput placeholder="Buscar">                        
+          </mat-form-field>
+</p>
+
+<mat-list>
+      <h3 mat-subheader>Categories</h3>
+      <mat-list-item *ngFor="let folder of folders">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{folder.name}}</h4>
+        <p mat-line> {{folder.updated | date}} </p>
+        <div>
+            <button mat-icon-button>
+                  <mat-icon>edit</mat-icon>
+                </button>
+         </div>
+        <div><button mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button></div>
+      </mat-list-item>      
+    </mat-list>

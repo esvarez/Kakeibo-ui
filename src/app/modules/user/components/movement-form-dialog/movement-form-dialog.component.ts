@@ -38,14 +38,14 @@ export class MovementFormDialogComponent implements OnInit, OnDestroy {
     this.selectsSubscription = this.store.select('userState')
       .subscribe(state => {                
         this.allCategories = state.categories        
-        this.movementType.setValue(state.movementType)
-        if (state.accountSelected != null) {
-          this.account.setValue(state.accountSelected.id)          
-        }        
+        this.movementType.setValue(state.movementType)                
       })      
     this.accountsSubscriber = this.store.select('accountsState')
         .subscribe(state => {
           this.accounts = state.accounts
+          if (state.accountSelected != null) {
+            this.account.setValue(state.accountSelected.id)          
+          }
         })
     if (this.allCategories == null){
       this.setCategories()

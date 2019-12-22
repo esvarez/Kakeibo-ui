@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
-import { State } from 'src/app/reducers';
-import { CloseSesionAction } from '../../store/actions';
 
 @Component({
   selector: 'kui-dashboard',
@@ -19,11 +16,5 @@ export class DashboardComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,
-              private store: Store<State>) {}
-
-  onCloseSesion() {
-    this.store.dispatch(new CloseSesionAction())
-  }
-  
+  constructor(private breakpointObserver: BreakpointObserver) {}
 }

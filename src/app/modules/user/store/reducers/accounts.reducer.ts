@@ -1,7 +1,5 @@
-import { State } from '@ngrx/store'
-
-import * as fromAccounts from '../actions/accounts.action'
 import { Account } from 'src/app/shared/models'
+import * as fromAccounts from '../actions/accounts.action'
 
 export interface AccountsState {
    accounts: Account[]

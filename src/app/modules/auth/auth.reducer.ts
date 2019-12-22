@@ -7,7 +7,8 @@ export interface AuthState {
 }
 
 const initState: AuthState = {
-   user: null
+   user: { id: 1, user:'init'}
+   //user: null
 }
 
 export function authReducer (state = initState, action: fromAuth.actions): AuthState { 
@@ -16,6 +17,11 @@ export function authReducer (state = initState, action: fromAuth.actions): AuthS
          return {
             ... state, 
             user: { ... action.user }            
+         }
+      case fromAuth.UNSET_USER:
+         return {
+            ... state,
+            user: null
          }
       default:
          return state

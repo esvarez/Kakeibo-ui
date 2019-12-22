@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Movement } from 'src/app/shared/models';
 import { Observable } from 'rxjs';
 import { UrlConfig } from 'src/app/configs/UrlConfing';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,20 @@ export class MovementService {
     const body = JSON.stringify(movement)
     
     return this.httpClient.post(`${this.url.host}${this.url.accounts}/${accountId}${this.url.movements}`, body, { headers: this.headers})
+  }
+
+  private transformData(movements) {
+
+     
+
+    console.log(movements)
+     let x = [
+      ... movements.map(movement => {
+         return { ... movement }
+      })
+   ] 
+     console.log(x)
+     return x
   }
 
 }

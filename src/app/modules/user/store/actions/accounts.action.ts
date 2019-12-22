@@ -8,6 +8,8 @@ export const LOAD_ACCOUNTS_SUCCESS = '[ACCOUNTS] Load accounts success'
 
 export class LoadAccountsAction implements Action {
    readonly type = LOAD_ACCOUNTS   
+
+   constructor(public userId: Number) { }
 }
 
 export class LoadAccountsSuccessAction implements Action {
